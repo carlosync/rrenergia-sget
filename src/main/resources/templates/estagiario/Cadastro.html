@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt"
+<html lang="pt-BR"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/LayoutPadrao}"
       xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/upload.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/bootstrap-datepicker.standalone.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/bootstrap-switch.min.css}"/>
 </head>
 
 <body>
@@ -188,14 +190,28 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="data_inicio">Data Início</label>
-                                <input id="data_inicio" type="text" class="form-control"/>
+                                <input id="data_inicio" type="text" class="form-control"  data-provide="datepicker" data-date-format="dd/mm/yyyy"
+                                       data-date-language="pt-BR" data-date-autoclose="true" data-date-today-highlight="true"
+                                       data-date-orientation="bottom" autocomplete="off"/>
                             </div>
                         </div>
 
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="data_termino">Data Termino</label>
-                                <input id="data_termino" type="text" class="form-control"/>
+                                <input id="data_termino" type="text" class="form-control" data-provide="datepicker" data-date-format="dd/mm/yyyy"
+                                       data-date-language="pt-BR" data-date-autoclose="true" data-date-today-highlight="true"
+                                       data-date-orientation="bottom" autocomplete="off"/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <div>
+                                    <input type="checkbox" class="js-status" data-size="small" data-off-color="danger"
+                                           data-on-color="success" data-on-text="Ativo" data-off-text="Inativo"/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -209,8 +225,7 @@
                             <div id="upload-drop" class="bw-upload">
                                 <i class="glyphicon  glyphicon-cloud-upload"></i>
                                 <span>Arraste a foto aqui ou </span>
-                                <a class="bw-upload-form-file">selecione <input id="upload-select" type="file"
-                                                                                accept=".jpg,.jpeg,.png"/></a>
+                                <a class="bw-upload-form-file">selecione <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
                             </div>
                         </div>
                     </div>
@@ -230,6 +245,9 @@
 <th:block layout:fragment="js-extras">
     <script th:src="@{/layout/javascripts/vendors/uikit.min.js}"></script>
     <script th:src="@{/layout/javascripts/vendors/upload.min.js}"></script>
+    <script th:src="@{/layout/javascripts/vendors/bootstrap-datepicker.min.js}"></script>
+    <script th:src="@{/layout/javascripts/vendors/bootstrap-datepicker.pt-BR.min.js}"></script>
+    <script th:src="@{/layout/javascripts/vendors/bootstrap-switch.min.js}"></script>
 
     <script>
         $(function () {
@@ -249,6 +267,8 @@
                 $(this).tab('show');
             });
         });
+
+        $('.js-status').bootstrapSwitch();
     </script>
 </th:block>
 </body>
