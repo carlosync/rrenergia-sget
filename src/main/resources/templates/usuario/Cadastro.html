@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/LayoutPadrao}"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/upload.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/bootstrap-datepicker.standalone.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/bootstrap-switch.min.css}"/>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-10">
+                    <h1>Cadastro de Usuário</h1>
+                </div>
+
+                <div class="col-xs-2">
+                    <div class="aw-page-header-controls">
+                        <a class="btn btn-primary">
+                            <i class="fa fa-search"></i>
+                            <span class="hidden-xs hidden-sm">Pesquisa</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <!--            <div class="alert  alert-danger  alert-dismissible" role="alert">-->
+        <!--                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+        <!--                <i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.-->
+        <!--            </div>-->
+
+        <form method="get" class="form-vertical  js-form-loading">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input id="nome" type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="data_nascimento">Data de Nascimento</label>
+                        <input id="data_nascimento" type="text" class="form-control" data-provide="datepicker" data-date-format="dd/mm/yyyy"
+                               data-date-language="pt-BR" data-date-autoclose="true" data-date-today-highlight="true"
+                               data-date-orientation="bottom" autocomplete="off"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input id="senha" type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="confsenha">Confirmação de senha</label>
+                        <input id="confsenha" type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Status</label>
+                        <div>
+                            <input type="checkbox" class="js-status" data-size="small" data-off-color="danger"
+                                   data-on-color="success" data-on-text="Ativo" data-off-text="Inativo"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Grupos</label>
+                        <div>
+                            <div class="radio radio-inline">
+                                <input id="sim" type="radio" name="grupos">
+                                <label>Administrador</label>
+                            </div>
+
+                            <div class="radio radio-inline">
+                                <input id="nao" type="radio" name="grupos" checked>
+                                <label>Assistente</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn  btn-primary" type="submit">
+                    Salvar
+                    <i class="fa fa-check"></i>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+<th:block layout:fragment="js-extras">
+    <script th:src="@{/layout/javascripts/vendors/bootstrap-datepicker.min.js}"></script>
+    <script th:src="@{/layout/javascripts/vendors/bootstrap-datepicker.pt-BR.min.js}"></script>
+    <script th:src="@{/layout/javascripts/vendors/bootstrap-switch.min.js}"></script>
+
+    <script>
+        $('.js-status').bootstrapSwitch();
+    </script>
+</th:block>
+</body>
+</html>
