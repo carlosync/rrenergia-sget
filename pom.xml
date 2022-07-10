@@ -90,6 +90,19 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>8.5.11</version>
+                <configuration>
+                <url>jdbc:mysql://localhost:3306/sget</url>
+                <user>root</user>
+                <password>gremio</password>
+                <schemas>
+                    <schema>sget</schema>
+                </schemas>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
