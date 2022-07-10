@@ -24,7 +24,7 @@ public class Departamento {
     private String nome;
 
     @NotBlank(message = "Sigla é Obrigatório")
-    @Column(name = "nome", length = 10)
+    @Column(name = "sigla", length = 10)
     private String sigla;
 
     @NotNull(message = "Gerente é obrigatório")
