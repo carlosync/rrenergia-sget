@@ -38,28 +38,28 @@
         <!--                <i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.-->
         <!--            </div>-->
 
-        <form method="get" class="form-vertical  js-form-loading">
+        <form method="POST" th:object="${departamento}" class="form-vertical  js-form-loading">
 
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="nome">Nome do departamento</label>
-                        <input id="nome" type="text" class="form-control"/>
+                        <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
                     </div>
                 </div>
 
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label for="sigla">Sigla do departamento</label>
-                        <input id="sigla" type="text" class="form-control" placeholder="Ex: DFP"/>
+                        <input id="sigla" type="text" class="form-control" placeholder="Ex: DFP" th:field="*{sigla}"/>
                     </div>
                 </div>
 
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="gerente_supervisor">Gerente/Supervisor</label>
-                        <select id="gerente_supervisor" class="form-control">
-                            <option>Selecione um gerente/supervisor</option>
+                        <select id="gerente_supervisor" class="form-control" th:field="*{gerente}">
+                            <option value="">Selecione um gerente/supervisor</option>
                             <option th:each="gerente : ${gerentes}" th:value="${gerente.codigo}" th:text="${gerente.nome}">DFT</option>
                         </select>
                     </div>
