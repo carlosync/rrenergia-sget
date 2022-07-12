@@ -2,6 +2,7 @@ package br.com.rrenergia.sget.controller;
 
 import br.com.rrenergia.sget.model.Departamento;
 import br.com.rrenergia.sget.repository.GerenteRepository;
+import br.com.rrenergia.sget.service.DepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,8 @@ public class DepartamentoController {
 
     @Autowired
     private GerenteRepository gerenteRepository;
+    @Autowired
+    private DepartamentoService departamentoService;
 
     @GetMapping("/novo")
     public ModelAndView novo(Departamento departamento){
@@ -29,11 +32,9 @@ public class DepartamentoController {
     }
 
     @PostMapping("/novo")
-    public ModelAndView cadastrar(@Valid Departamento departamento, BindingResult bindingResult, RedirectAttributes redirectAttributes){
-
+    public ModelAndView salvar(@Valid Departamento departamento, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        departamentoService.salvar(departamento);
         redirectAttributes.addFlashAttribute("mensagem" , "Departamento salvo com sucesso.");
-        System.out.println("Nome: " + departamento.getNome());
-        System.out.println("Gerente " + departamento.getGerente());
         return new ModelAndView("redirect:/departamentos/novo");
     }
 }

@@ -38,13 +38,13 @@
         <!--                <i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.-->
         <!--            </div>-->
 
-        <form method="get" class="form-vertical  js-form-loading">
+        <form method="POST" th:object="${gerente}" class="form-vertical  js-form-loading">
 
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input id="nome" type="text" class="form-control"/>
+                        <input id="nome" type="text" class="form-control" th:field="*{nome}"/>
                     </div>
                 </div>
 
@@ -52,15 +52,12 @@
                     <div class="form-group">
                         <label>Tipo</label>
                         <div>
-                            <div class="radio radio-inline">
-                                <input id="sim" type="radio" name="tipo" checked>
-                                <label>Gerente</label>
-                            </div>
-
-                            <div class="radio radio-inline">
-                                <input id="nao" type="radio" name="tipo">
-                                <label>Supervisor</label>
-                            </div>
+                            <th:block th:each="tipoGerente : ${tipos}">
+                                <div class="radio radio-inline">
+                                    <input th:id="|id_${tipoGerente}|" type="radio" th:value="${tipoGerente}" th:field="*{tipoGerente}">
+                                    <label th:for="|id_${tipoGerente}|" th:text="${tipoGerente.descricao}">Gerente</label>
+                                </div>
+                            </th:block>
                         </div>
 
                     </div>
